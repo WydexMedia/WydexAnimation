@@ -1,0 +1,717 @@
+/* Terms & Conditions and Privacy Policy page styles */
+.privacy-main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 32px 20px 32px 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  color: #111;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+.privacy-main h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  color: #00b894;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.privacy-main h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  color: #222;
+  border-left: 4px solid #00b894;
+  padding-left: 10px;
+}
+.privacy-main ul {
+  margin: 0 0 1.5em 1.2em;
+  padding: 0;
+  color: #222;
+}
+.privacy-main ul li {
+  margin-bottom: 0.5em;
+  padding-left: 0.2em;
+}
+.privacy-main p, .privacy-main li {
+  color: #222;
+}
+.privacy-main a {
+  color: #00b894;
+  text-decoration: underline;
+  word-break: break-all;
+}
+.privacy-main a:hover {
+  color: #007a5a;
+}
+.privacy-main {
+  transition: box-shadow 0.3s;
+}
+.privacy-main:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+}
+@media (max-width: 700px) {
+  .privacy-main {
+    padding: 18px 4vw 18px 4vw;
+    font-size: 0.98rem;
+  }
+  .privacy-main h1 {
+    font-size: 1.3rem;
+  }
+  .privacy-main h2 {
+    font-size: 1.05rem;
+  }
+}
+@media (max-width: 600px) {
+  .animequote {
+    display: none !important;
+  }
+}
+/* Responsive styles for animequote section and scroll-anim-sentence */
+.animequote {
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.scroll-anim-text {
+  font-size: 2.2rem;
+  line-height: 1.4;
+  max-width: 95vw;
+  margin: 0 auto;
+  word-break: break-word;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.letter {
+  display: inline-block;
+  transition: color 0.2s;
+}
+.letter.space {
+  width: 0.5em;
+}
+
+@media (max-width: 900px) {
+  .scroll-anim-text {
+    font-size: 1.4rem;
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .animequote {
+    padding: 24px 0;
+  }
+  .scroll-anim-text {
+    font-size: 1.05rem;
+    padding: 0 2px;
+  }
+}
+/* Scrollable Colouring Animation Section */
+.animequote {
+  width: 100vw;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #181c24;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.scroll-anim-text {
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  padding: 20px;
+  max-width: 900px;
+  text-align: center;
+  word-break: break-word;
+}
+.letter {
+  color: #bbb;
+  transition: color 0.2s ease;
+  display: inline-block;
+  /* Optional: add a little spacing between all letters */
+  /* letter-spacing: 0.02em; */
+}
+.letter.active {
+  color: #ffb347;
+}
+.letter.space {
+  width: 0.4em; /* or whatever width you want for spaces */
+}
+@media (max-width: 600px) {
+  .scroll-anim-text {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 600px) {
+  .scroll-anim-text {
+    font-size: 2rem;
+  }
+}
+/* About Us Section Styling */
+.aboutUs {
+  background: black;
+  padding: 64px 0 48px 0;
+  color: #f5f5f7;
+}
+.aboutUsContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  padding: 0 24px;
+}
+.aboutUsContent > div:first-child {
+  flex: 1 1 340px;
+  min-width: 260px;
+}
+.aboutUsContent h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #ffb347;
+  letter-spacing: 1px;
+}
+.aboutUsContent p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  color: #e0e0e0;
+}
+.aboutUs3D {
+  flex: 1 1 320px;
+  /* margin-top: 150px; */
+  min-width: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.13);
+  padding: 18px 0;
+}
+.aboutUs3D model-viewer {
+  width: 100%;
+  max-width: 340px;
+  height: 340px;
+  background: transparent;
+}
+.learnMoreBtn {
+  background: linear-gradient(90deg, #ffb347 0%, #ffcc80 100%);
+  color: #232a36;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,179,71,0.13);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.learnMoreBtn:hover, .learnMoreBtn:focus {
+  background: linear-gradient(90deg, #ffcc80 0%, #ffb347 100%);
+  color: #181c24;
+  transform: translateY(-2px) scale(1.04);
+}
+@media (max-width: 900px) {
+  .aboutUsContent {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 10px;
+  }
+  .aboutUs3D {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+/* Next video button style for better mobile/desktop appearance */
+#nextVideoBtn {
+    transition: background 0.2s;
+}
+
+#nextVideoBtn:hover,
+#nextVideoBtn:focus {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ccc;
+}
+
+
+.icons {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+
+#hamburger {
+  display: none;
+}
+
+
+.custom-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px; /* Full rounded */
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    padding-top: 80px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.hero a {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+}
+
+.scroll-down {
+    margin-top: 40px;
+    font-size: 24px;
+}
+
+#heroVideo {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100svh;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+
+.animequote {
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+}
+
+.services-section {
+  padding: 4rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  /* background-color: #101010; */
+  color: white;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: #ccc;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: linear-gradient(to bottom right, #1f2937, #000);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(100, 100, 100, 0.6);
+}
+
+.card-content {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.card-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #0f766e, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-number {
+  transform: translateX(20px);
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer {
+  background-color: #000;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 3rem 6rem 1.5rem;
+}
+
+.footer-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.footer-header h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footer-header p {
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+.quote-btn {
+  padding: 0.8rem 1.6rem;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.quote-btn:hover {
+  background: white;
+  color: black;
+}
+
+.blog-section {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  background-color: white;
+  width: 100%;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-row {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+.blog-card {
+  width: 300px;
+  min-width: 300px;
+  background-color: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.card-body {
+  background-color: #f3f4f6;
+  padding: 20px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.card-body a {
+  background-color: black;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.card-body a:hover {
+  background-color: #333;
+}
+
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-grid h4 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-grid li {
+  margin-bottom: 0.5rem;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #111;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.footer-bottom a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 0.4rem;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials img {
+  width: 22px;
+  margin-left: 12px;
+  filter: brightness(0.8);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-socials img:hover {
+  filter: brightness(1.2);
+}
+
+@media (max-width: 900px) {
+
+    .hero,
+    #heroVideo {
+        width: 100vw;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding-top: 64px;
+    }
+
+    header {
+        padding: 16px 20px;
+        height: 64px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero,
+    #heroVideo {
+        width: 100vw;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding-top: 56px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 8px;
+        position: fixed;
+        height: 56px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    #mainNav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0;
+        display: none;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #mainNav.show {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 16px 24px;
+        width: 100%;
+        border-bottom: 1px solid #222;
+        box-sizing: border-box;
+    }
+
+  .icons {
+    font-size: 16px;
+    gap: 10px;
+    align-self: flex-end;
+    z-index: 20;
+  }
+  #hamburger {
+    display: inline;
+  }
+}

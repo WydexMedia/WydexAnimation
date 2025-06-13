@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wydex</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./src/image/wm logo.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Wydex</div>
+        <nav id="mainNav">
+            <a href="#">Services</a>
+            <a href="#">Solutions</a>
+            <a href="#">Industries</a>
+            <a href="#">Works</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="icons">
+            <!-- <span>📞</span>
+      <span>🔍</span>
+      <span>🔖</span> -->
+            <span id="hamburger" style="cursor:pointer;">☰</span>
+        </div>
+    </header>
+
+
+    <section class="hero">
+        <video id="heroVideo" autoplay muted loop playsinline style="width:100%;height:auto;">
+            <source src="src/videos/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="nextVideoBtn" aria-label="Next video"
+            style="position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:30;background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:1.3rem;padding:4px 10px;border-radius:50%;cursor:pointer;outline:none;">
+            &#8594;
+        </button>
+    </section>
+
+
+    <section class="animequote">
+        <div id="scroll-anim-sentence" class="scroll-anim-text" style="margin: 250px;"></div>
+    </section>
+
+    <section class="aboutUs">
+        <div class="aboutUsContent" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px;">
+            <div style="flex: 1 1 320px; min-width: 260px;">
+                <h2>Our Story</h2>
+                <p>Wydex Media is the best digital marketing agency in Calicut, offering 360-degree marketing strategies
+                    that cover everything from social media and SEO to branding, design, and paid ads. We focus on
+                    simplicity, consistency, and real results — helping your brand grow and succeed online.
+                </p>
+                <button class="custom-button">
+                    About Us
+                </button>
+            </div>
+            <div class="aboutUs3D"
+                style="flex: 1 1 320px; min-width: 260px; display: flex; justify-content: center; align-items: center;">
+                <model-viewer src="src/3d/logo_colored_fixed.glb" alt="Wydex 3D Logo" auto-rotate camera-controls
+                    background-color="#000000" style="width: 100%; max-width: 340px; height: 340px;"></model-viewer>
+            </div>
+        </div>
+    </section>
+        <section class="services-section" id="service">
+  <h2 class="section-title">SERVICES</h2>
+  <p class="section-subtitle">
+    Why Choose the Best Digital Marketing Agency in Calicut?
+  </p>
+
+  <div class="services-grid">
+    <!-- Card 1 -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="card-number">01</div>
+        <h3>Social Media Marketing</h3>
+        <p>
+          Wydax Media is one of the best digital marketing agencies in Calicut, helping businesses grow with expert social media marketing strategies. We create engaging content, targeted ads, and data-driven campaigns to boost your brand on Facebook, Instagram, and LinkedIn.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="card-number">02</div>
+        <h3>SEO</h3>
+        <p>
+          As one of the best digital marketing agencies in Calicut, we improve your website’s Google ranking with expert SEO strategies. Our services include keyword research, on-page SEO, content optimization, and link building to drive long-term results.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="card-number">03</div>
+        <h3>Web Design & Development</h3>
+        <p>
+          We craft responsive, SEO-friendly websites that blend design with performance. Our web solutions ensure smooth user experience, fast loading speeds, mobile optimization, and a strong online presence that drives conversions.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="service-card">
+      <div class="card-content">
+        <div class="card-number">04</div>
+        <h3>Branding & Strategy</h3>
+        <p>
+          We craft powerful brand identities and strategic roadmaps that resonate with your audience. From logo design to brand positioning, we ensure consistency, clarity, and creativity across all channels to drive lasting impact.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section" id="blog">
+  <div class="scroll-container">
+    <div class="scroll-row">
+      
+      <!-- Card 1 -->
+      <div class="blog-card">
+        <img src="./src/image/the role of content marketing in building brand authority.webp" alt="The Role of Content Marketing" />
+        <div class="card-body">
+          <h3>The Role of Content Marketing in Building Brand Authority</h3>
+          <p>In today’s competitive digital landscape, establishing brand authority is essential for businesses aiming to differentiate themselves…</p>
+          <a href="./src/blog1.html">Read more</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="blog-card">
+        <img src="./src/image/Influencer marketing in 2025 Trends and strategies for success.webp" alt="Influencer Marketing in 2025" />
+        <div class="card-body">
+          <h3>Influencer Marketing in 2025: Trends and Strategies</h3>
+          <p>Influencer marketing has become a pivotal strategy in the digital landscape, enabling brands to connect authentically…</p>
+          <a href="./src/blog2.html">Read more</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="blog-card">
+        <img src="./src/image/SEO Meets AI how artificial intelligence is reshaping search in 2025.webp" alt="SEO Meets AI" />
+        <div class="card-body">
+          <h3>SEO Meets AI: How AI is Reshaping Search in 2025</h3>
+          <p>Search Engine Optimization (SEO) is no longer just about keywords, backlinks, and rankings. In 2025, SEO has entered…</p>
+          <a href="./src/blog3.html">Read more</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="blog-card">
+        <img src="./src/image/Top digital marketing trends to watch in 2025.webp" alt="Digital Marketing Trends 2025" />
+        <div class="card-body">
+          <h3>Top digital marketing trends to watch in 2025.</h3>
+          <p>As we move further into the digital era, the world of marketing continues to evolve at lightning speed. New technologies, shifting…</p>
+          <a href="./src/blog4.html">Read more</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="./src/image/Top digital marketing trends to watch in 2025.webp" alt="Digital Marketing Trends 2025" />
+        <div class="card-body">
+          <h3>Top digital marketing trends to watch in 2025.</h3>
+          <p>As we move further into the digital era, the world of marketing continues to evolve at lightning speed. New technologies, shifting…</p>
+          <a href="./src/blog4.html">Read more</a>
+        </div>
+      </div>
+
+
+      <div class="blog-card">
+        <img src="./src/image/Top digital marketing trends to watch in 2025.webp" alt="Digital Marketing Trends 2025" />
+        <div class="card-body">
+          <h3>Top digital marketing trends to watch in 2025.</h3>
+          <p>As we move further into the digital era, the world of marketing continues to evolve at lightning speed. New technologies, shifting…</p>
+          <a href="./src/blog4.html">Read more</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-header">
+    <div>
+      <h2>Get started now!</h2>
+      <p>It takes less than a minute of your time.</p>
+    </div>
+    <button class="quote-btn">Request a quote →</button>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li>About</li>
+        <li>Services</li>
+        <li>Industries</li>
+        <li>Works</li>
+        <li>Careers</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>Branding</li>
+        <li>Experience Design</li>
+        <li>Technology</li>
+        <li>Digital Marketing</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Other</h4>
+      <ul>
+        <li>Partnership</li>
+        <li>Awards and Recognitions</li>
+        <li>Insights</li>
+        <li>Blogs</li>
+        <li>Resource Augmentation</li>
+        <li>Testimonials</li>
+        <li>Our Clients</li>
+        <li>Submit Feedback to Our CEO</li>
+        <li>Download Brochure</li>
+        <li>Sitemap</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li>General Enquiry : +91 000 0000 000</li>
+        <li>Sales Enquiry : +91 000 0000 000</li>
+        <li>Email : wydexmedia@gmail.com</li>
+        <li>HR Enquiry : +91 7593 885 895</li>
+        <li>Whatsapp (Sales) : +91 000 000 000</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>WYDEX © 2025 All rights reserved</div>
+    <div><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms & Conditions</a></div>
+    <div class="footer-socials">
+      <img src="./src/image/linkedin_afb211c6b4.svg" style="width: 30px; height: 25px;" alt="LinkedIn">
+      <img src="./src/image/youtube_f40a433a78.svg" style="width: 30px; height: 25px;"  alt="YouTube">
+      <img src="./src/image/instagram_8d8e30ada5.svg" style="width: 30px; height: 25px;"  alt="Instagram">
+      <img src="./src/image/facebook_eed590c443.svg" style="width: 30px; height: 25px;"  alt="Facebook">
+      <img src="./src/image/twitter_d2fd7c28ec.svg" style="width: 30px; height: 25px;"  alt="X">
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body>
+
+</html>
+<!-- GSAP and ScrollTrigger CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script src="./script.js"></script>
