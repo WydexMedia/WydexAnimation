@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./career.css">
+
+</head>
+
+
+<body>
+    <section class="team-section">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="./src/videos/wydex carrer.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="team-content">
+            <h1>Let Our Team<br />Be Your New Team</h1>
+            <p>
+                We always strive to make a positive difference in everything.
+                If that’s important to you; Webandcrafts would be a good fit
+            </p>
+            <a href="#" class="team-button">Current openings →</a>
+        </div>
+    </section>
+
+    <section class="openings-section">
+
+        <h2>Current Openings</h2>
+        <p>Become part of a high-performing & collaborative team</p>
+        <div class="accordion" id="jobsAccordion"></div>
+
+        <div class="openings-button">
+            <a href="#">See all openings →</a>
+        </div>
+    </section>
+    <section class="values-section">
+        <div class="values-left">
+            <h2>The Values We Live <br>By</h2>
+            <p>We make it a priority to keep our values up-front, anywhere and everywhere.</p>
+            <div class="values-icon">
+                <!-- Replace with your icon or SVG -->
+                <video autoplay muted loop playsinline>
+                    <source src="./src/videos/shape.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="values-right">
+            <div class="value-item">
+                <div class="value-num">01</div>
+                <div class="value-content">
+                    <h3>Growth</h3>
+                    <p>Our vision is to grow together as an organisation while working towards achieving individual and
+                        professional goals.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-num">02</div>
+                <div class="value-content">
+                    <h3>People</h3>
+                    <p>Our people are the driving force behind all our achievements, and we make it a point to give it
+                        back to them.</p>
+                </div>
+            </div>
+
+             <div class="value-item">
+                <div class="value-num">03</div>
+                <div class="value-content">
+                    <h3>Balance</h3>
+                    <p>We value life and its intricate balance, hence ensuring all our people are well balanced in both their professional and personal roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="life-wac-section">
+  <h2>Life @ WYDEX</h2>
+  <p>A place where you can realise your full potential, nurture your dreams, and follow your passion! All of that with a daily dose of fun and laughter</p>
+
+  <div class="life-grid">
+    <div class="grid-item">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 1">
+    </div>
+    <div class="grid-item">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 2">
+    </div>
+    <div class="grid-item">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 3">
+    </div>
+    <div class="grid-item">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 4">
+    </div>
+    <div class="grid-item">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 5">
+    </div>
+    <div class="grid-item see-more">
+      <img src="./src/image/helen-ngoc-n-M-sd26hkQZI-unsplash.jpg" alt="Life at WAC 6">
+      <div class="overlay">
+        <span>See More</span>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="perks-section">
+  <div class="perks-header">
+    <h2>Perks & Benefits</h2>
+    <p>We make our employees' well-being our priority, by providing only the best</p>
+  </div>
+
+  <div class="perks-grid">
+    <div class="perk-item">
+      <div class="perk-icon">📈</div> <!-- Replace with actual icon or SVG -->
+      <h3>Growth Opportunities</h3>
+      <p>Keeping our employees growing and prospering is our goal at Webandcrafts, as we believe learning never stops and there is always an opportunity to better ourselves.</p>
+    </div>
+
+    <div class="perk-item">
+      <div class="perk-icon">💵</div> <!-- Replace with actual icon or SVG -->
+      <h3>Competitive Remuneration</h3>
+      <p>We recognise the value of our employees' contributions and are committed to rewarding them accordingly, ensuring their continued growth and satisfaction within our organisation.</p>
+    </div>
+
+    <div class="perk-item">
+      <div class="perk-icon">🌿</div> <!-- Replace with actual icon or SVG -->
+      <h3>Eco-friendly Workplace</h3>
+      <p>Being surrounded by beautiful trees and nature enhances employees' mental wellbeing and we strive to reduce our carbon footprint in a green environment.</p>
+    </div>
+  </div>
+</section>
+
+
+    <script>
+
+        // Fetch jobs from localStorage and render accordion
+        function renderJobsAccordion() {
+            const jobsData = JSON.parse(localStorage.getItem("jobs")) || {};
+            const accordion = document.getElementById("jobsAccordion");
+            accordion.innerHTML = '';
+            const categories = Object.keys(jobsData);
+            if (categories.length === 0) {
+                accordion.innerHTML = '<p style="color:#888;">No job openings at the moment.</p>';
+                return;
+            }
+            categories.forEach(category => {
+                const roles = jobsData[category];
+                const item = document.createElement('div');
+                item.className = 'accordion-item';
+                const header = document.createElement('button');
+                header.className = 'accordion-header';
+                header.textContent = `${category} (${roles.length})`;
+                const body = document.createElement('div');
+                body.className = 'accordion-body';
+                const ul = document.createElement('ul');
+                roles.forEach(job => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${job.role}</strong>` + (job.location ? ` <span style="color:#888;font-size:0.95em;">(${job.location})</span>` : '') + (job.description ? `<br><span style="color:#666;font-size:0.95em;">${job.description}</span>` : '');
+                    ul.appendChild(li);
+                });
+                body.appendChild(ul);
+                item.appendChild(header);
+                item.appendChild(body);
+                accordion.appendChild(item);
+            });
+        }
+
+        renderJobsAccordion();
+
+        // Accordion toggle logic
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('accordion-header')) {
+                const item = e.target.parentElement;
+                item.classList.toggle('active');
+                const body = item.querySelector('.accordion-body');
+                body.style.display = body.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

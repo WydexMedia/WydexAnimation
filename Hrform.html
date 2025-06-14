@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>HR Job Entry</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        h2 {
+            margin-top: 48px;
+            margin-bottom: 24px;
+            font-size: 2.1rem;
+            color: #00b894;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+
+        form {
+            max-width: 420px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 32px 28px 24px 28px;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(0,184,148,0.10);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        input,
+        textarea {
+            width: 95%;
+            margin-bottom: 0;
+            padding: 12px 14px;
+            font-size: 1.08rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f8f8f8;
+            transition: border 0.2s;
+            font-family: inherit;
+            resize: none;
+        }
+        input:focus, textarea:focus {
+            border: 1.5px solid #00b894;
+            outline: none;
+            background: #fff;
+        }
+
+        textarea {
+            min-height: 80px;
+            max-height: 200px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #00b894 0%, #00e6b8 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0,184,148,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        button:hover {
+            background: #00b894;
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.3rem;
+                margin-top: 24px;
+            }
+            form {
+                padding: 18px 6vw 18px 6vw;
+                border-radius: 10px;
+            }
+            input, textarea {
+                font-size: 0.98rem;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Add New Job Opening</h2>
+    <form id="jobForm">
+        <input type="text" placeholder="Category (e.g., Design)" id="categoryInput" required />
+        <input type="text" placeholder="Role (e.g., UI Designer)" id="roleInput" required />
+        <textarea placeholder="Description" id="descriptionInput" required></textarea>
+        <input type="text" placeholder="Location" id="locationInput" required />
+        <button type="submit">Add Job</button>
+    </form>
+
+    <script>
+        let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+        document.getElementById("jobForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const category = document.getElementById("categoryInput").value.trim();
+            const role = document.getElementById("roleInput").value.trim();
+            const description = document.getElementById("descriptionInput").value.trim();
+            const location = document.getElementById("locationInput").value.trim();
+
+            if (category && role) {
+                // Group jobs by category
+                let jobsData = JSON.parse(localStorage.getItem("jobs")) || {};
+                if (!jobsData[category]) jobsData[category] = [];
+                jobsData[category].push({ role, description, location });
+                localStorage.setItem("jobs", JSON.stringify(jobsData));
+                alert("Job added!");
+                document.getElementById("jobForm").reset();
+            }
+        });
+    </script>
+
+
+    <footer style="width:100%;margin-top:48px;padding:32px 0 18px 0;background:rgba(0,184,148,0.07);text-align:center;font-size:1.05rem;color:#222;letter-spacing:0.01em;">
+        <div style="margin-bottom:8px;">
+            <a href="privacy-policy.html" style="color:#00b894;text-decoration:none;margin:0 18px;">Privacy Policy</a>
+            |
+            <a href="terms-and-conditions.html" style="color:#00b894;text-decoration:none;margin:0 18px;">Terms &amp; Conditions</a>
+        </div>
+        <div style="font-size:0.98rem;color:#555;">&copy; 2025 Wydex, Calicut. All rights reserved.</div>
+    </footer>
+
+</body>
+
+</html>

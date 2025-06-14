@@ -1,0 +1,322 @@
+        .team-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .team-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            background: rgba(0, 0, 0, 0.3);
+            /* subtle overlay */
+        }
+
+        .team-content h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .team-content p {
+            font-size: 1rem;
+            color: #ddd;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .team-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #ccc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-button:hover {
+            background: white;
+            color: black;
+        }
+
+        .openings-section {
+            /* max-width: 800px; */
+            width: 100%;
+            background-color: white;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .openings-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .openings-section p {
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .accordion-item {
+            border-top: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            background: white;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .accordion-header::after {
+            content: "⌄";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            display: none;
+            padding: 0 20px 20px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .accordion-body ul {
+            padding-left: 16px;
+            list-style: disc;
+        }
+
+        .openings-button {
+            margin-top: 40px;
+        }
+
+        .openings-button a {
+            padding: 12px 24px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .openings-button a:hover {
+            background: black;
+            color: white;
+        }
+        .values-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 80px 20px;
+  background: black;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.values-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.values-left h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.values-left p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.values-icon {
+  font-size: 3rem;
+}
+
+.values-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.value-item {
+  border-left: 1px solid #333;
+  padding-left: 20px;
+}
+
+.value-num {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.value-content h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.value-content p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.life-wac-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.life-wac-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.life-wac-section p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.life-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.see-more .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.see-more:hover .overlay {
+  opacity: 1;
+}
+.perks-section {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.perks-header h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.perks-header p {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  color: #555;
+  font-size: 1rem;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+
+.perk-item {
+  background: white;
+  padding: 30px;
+  border-bottom: 2px solid black;
+  border-radius: 6px;
+}
+
+.perk-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.perk-item h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.perk-item p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+@media (max-width: 768px) {
+  .values-section {
+    grid-template-columns: 1fr;
+  }
+
+  .values-left, .values-right {
+    padding: 0;
+  }
+}

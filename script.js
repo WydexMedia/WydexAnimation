@@ -1,3 +1,33 @@
+// --- Triple Section Scroll Animation (Design/Build/Market) ---
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.gsap && window.ScrollTrigger) {
+    const sections = gsap.utils.toArray('.triple-section');
+    if (sections.length > 0) {
+      // Set all sections to absolute, hidden, except the first
+      gsap.set(sections, { autoAlpha: 0, y: 80, position: 'absolute', left: 0, right: 0, top: 0 });
+      gsap.set(sections[0], { autoAlpha: 1, y: 0, zIndex: 3 });
+      gsap.set(sections[1], { zIndex: 2 });
+      gsap.set(sections[2], { zIndex: 1 });
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.triple-section-pin',
+          start: 'top top',
+          end: `+=${sections.length * 100}%`,
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
+
+      // Animate in/out each section in sequence
+      tl.to(sections[0], { autoAlpha: 0, y: -80, zIndex: 1, duration: 0.5, ease: 'power1.inOut' }, 0)
+        .to(sections[1], { autoAlpha: 1, y: 0, zIndex: 3, duration: 0.5, ease: 'power1.inOut' }, 0.5)
+        .to(sections[1], { autoAlpha: 0, y: -80, zIndex: 1, duration: 0.5, ease: 'power1.inOut' }, 1)
+        .to(sections[2], { autoAlpha: 1, y: 0, zIndex: 3, duration: 0.5, ease: 'power1.inOut' }, 1.5);
+    }
+  }
+});
 // Scrollable coloring animation for animequote section (reference style, improved for normal scroll)
 document.addEventListener('DOMContentLoaded', function () {
 
