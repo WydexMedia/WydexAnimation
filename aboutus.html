@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Wydex Media - Best Digital Marketing Agency in Calicut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #555;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Platform Cards */
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            border-color: #000;
+        }
+
+        .platform-card.google {
+            border-top: 4px solid #000;
+        }
+
+        .platform-card.meta {
+            border-top: 4px solid #000;
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .google .platform-icon {
+            background: #000;
+            color: white;
+        }
+
+        .meta .platform-icon {
+            background: #333;
+            color: white;
+        }
+
+        .platform-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .platform-description {
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .benefits-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #333;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .best-for {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .best-for h4 {
+            color: #000;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .best-for ul {
+            list-style: none;
+        }
+
+        .best-for li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #333;
+        }
+
+        .best-for li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+
+        /* Decision Guide */
+        .decision-guide {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .decision-guide h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .decision-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .decision-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .decision-option h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 15px 35px;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            padding: 15px 35px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-card {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .decision-guide {
+                padding: 40px 20px;
+            }
+
+            .decision-guide h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- <div id="header-include"></div>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script> -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Wydex Media</h1>
+            <p class="subtitle">The Best Digital Marketing Agency in Calicut</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title">Smart Advertising Choices That Drive Results</h2>
+            <p class="section-subtitle">
+                Choosing where to invest your advertising budget is one of the most important decisions for your business. 
+                We help you make smart, result-driven choices between Google Ads and Meta Ads to maximize your return.
+            </p>
+
+            <div class="platforms-grid">
+                <!-- Google Ads Card -->
+                <div class="platform-card google">
+                    <div class="platform-icon">🔍</div>
+                    <h3 class="platform-title">Google Ads: Capturing People Ready to Buy</h3>
+                    <p class="platform-description">
+                        Google Ads helps you connect with customers who are already looking for your product or service. 
+                        When someone types a keyword into Google Search, your ad appears right when they're ready to make a decision.
+                    </p>
+                    
+                    <div class="best-for">
+                        <h4>💡 Best for:</h4>
+                        <ul>
+                            <li>Businesses offering services that customers actively search for</li>
+                            <li>E-commerce stores targeting specific buying intent</li>
+                            <li>Local businesses wanting instant visibility</li>
+                        </ul>
+                    </div>
+
+                    <ul class="benefits-list">
+                        <li>Your business shows up at the right moment — when customers are searching</li>
+                        <li>Detailed targeting by keywords, location, language, device</li>
+                        <li>Wide visibility across Google Search, YouTube, and partner sites</li>
+                    </ul>
+                </div>
+
+                <!-- Meta Ads Card -->
+                <div class="platform-card meta">
+                    <div class="platform-icon">📱</div>
+                    <h3 class="platform-title">Meta Ads: Building Interest, Demand & Relationships</h3>
+                    <p class="platform-description">
+                        Meta Ads display across Facebook, Instagram, Messenger, and the Audience Network. 
+                        These ads target users based on interests, behavior, age, location, and more — even when they aren't searching for your product.
+                    </p>
+                    
+                    <div class="best-for">
+                        <h4>💡 Best for:</h4>
+                        <ul>
+                            <li>Brands focused on creating demand and awareness</li>
+                            <li>Businesses with strong visual or lifestyle appeal</li>
+                            <li>Lead generation campaigns with forms or WhatsApp integration</li>
+                        </ul>
+                    </div>
+
+                    <ul class="benefits-list">
+                        <li>Powerful audience targeting based on interests and demographics</li>
+                        <li>Engaging formats: reels, stories, carousels, videos, and more</li>
+                        <li>Lower cost for awareness and engagement campaigns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Decision Guide -->
+    <section class="section">
+        <div class="container">
+            <div class="decision-guide">
+                <h2>🎯 How to Choose the Right One for Your Business?</h2>
+                
+                <div class="decision-options">
+                    <div class="decision-option">
+                        <h3>Choose Google Ads if:</h3>
+                        <p>Your goal is immediate conversions. You're targeting people who already want what you offer. Perfect for service-based businesses, e-commerce, and companies looking for fast, measurable results.</p>
+                    </div>
+                    
+                    <div class="decision-option">
+                        <h3>Choose Meta Ads if:</h3>
+                        <p>Your goal is to build brand recognition, tell your story, and reach new audiences. Meta Ads create connections with people who don't know your brand yet but may become loyal customers.</p>
+                    </div>
+                    
+                    <div class="decision-option">
+                        <h3>Combine Both for Best Results:</h3>
+                        <p>A balanced strategy delivers the most impact. Google Ads brings in high-intent buyers, while Meta Ads builds awareness, nurtures interest, and supports retargeting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Why Choose Wydex Media?</h2>
+            <p class="section-subtitle">
+                As the best digital marketing agency in Calicut, we believe success comes from the right strategy, 
+                creative quality, and continuous improvement. We help brands grow faster with smart, performance-driven ad campaigns.
+            </p>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto;">
+                    💡 The right choice depends on your business goals, customer journey, and budget. 
+                    Our team helps you craft a custom plan that ensures your ad spend brings maximum return.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>🚀 Let Wydex Media Help You Win Online</h2>
+            <p>
+                Whether you choose Google Ads, Meta Ads, or a mix of both, we're here to help you succeed. 
+                Ready to build your success story with the best digital marketing agency in Calicut?
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Contact Wydex Media Today</a>
+                <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.platform-card, .decision-guide').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -11,6 +11,12 @@
 
 
 <body>
+    <div id="header-include"></div>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script>
     <section class="team-section">
         <video autoplay muted loop playsinline class="background-video">
             <source src="./src/videos/wydex carrer.mp4" type="video/mp4">
@@ -159,7 +165,25 @@
                 const ul = document.createElement('ul');
                 roles.forEach(job => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<strong>${job.role}</strong>` + (job.location ? ` <span style="color:#888;font-size:0.95em;">(${job.location})</span>` : '') + (job.description ? `<br><span style="color:#666;font-size:0.95em;">${job.description}</span>` : '');
+                    li.innerHTML = `<strong>${job.role}</strong>` + (job.location ? ` <span style=\"color:#888;font-size:0.95em;\">(${job.location})</span>` : '') + (job.description ? `<br><span style=\"color:#666;font-size:0.95em;\">${job.description}</span>` : '');
+                    // Add Apply Now button
+                    const applyBtn = document.createElement('button');
+                    applyBtn.textContent = 'Apply Now';
+                    applyBtn.className = 'apply-now-btn';
+                    applyBtn.style.margin = '10px 0 0 0';
+                    applyBtn.style.padding = '8px 18px';
+                    applyBtn.style.background = '#007a5e';
+                    applyBtn.style.color = '#fff';
+                    applyBtn.style.border = 'none';
+                    applyBtn.style.borderRadius = '4px';
+                    applyBtn.style.cursor = 'pointer';
+                    applyBtn.type = 'button';
+                    applyBtn.onclick = function(e) {
+                        e.preventDefault();
+                        openJobApplicationModal(job.role, job.location, category);
+                    };
+                    li.appendChild(document.createElement('br'));
+                    li.appendChild(applyBtn);
                     ul.appendChild(li);
                 });
                 body.appendChild(ul);
@@ -181,6 +205,175 @@
             }
         });
 
+    </script>
+
+    <!-- Job Application Modal -->
+    <style>
+      #job-application-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.45);
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(.77,0,.18,1);
+      }
+      #job-application-modal.active {
+        display: flex;
+        pointer-events: auto;
+        opacity: 1;
+      }
+      #job-application-modal.closing {
+        pointer-events: none;
+        opacity: 0;
+      }
+      .job-modal-content {
+        background: #fff;
+        padding: 32px 24px 24px 24px;
+        border-radius: 12px;
+        max-width: 420px;
+        width: 95vw;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: auto;
+        color: #000;
+        height: 100vh;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.45s cubic-bezier(.77,0,.18,1), opacity 0.3s cubic-bezier(.77,0,.18,1);
+        z-index: 10000;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .job-modal-form-row {
+        display: flex;
+        gap: 14px;
+      }
+      .job-modal-form-row > div {
+        flex: 1 1 0;
+      }
+      @media (max-width: 600px) {
+        .job-modal-form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+      
+      #job-application-modal.active .job-modal-content {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      #job-application-modal.closing .job-modal-content {
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.45s cubic-bezier(.77,0,.18,1), opacity 0.3s cubic-bezier(.77,0,.18,1);
+      }
+    </style>
+    <div id="job-application-modal">
+      <div class="job-modal-content">
+        <button id="close-job-modal" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.5rem;cursor:pointer;">&times;</button>
+        <h2 style="margin-bottom:18px;font-size:1.4rem;">Apply for <span id="modal-job-title"></span></h2>
+        <form id="jobApplicationForm" enctype="multipart/form-data" method="POST" action="https://formspree.io/f/manjbyaw">
+          <input type="hidden" name="job_role" id="modal-job-role" />
+          <input type="hidden" name="job_location" id="modal-job-location" />
+          <input type="hidden" name="job_department" id="modal-job-department" />
+          <div class="job-modal-form-row" style="margin-bottom:14px;">
+            <div>
+              <label for="applicantName" style="display:block;margin-bottom:4px;">Name<span style="color:#ef4444;">*</span></label>
+              <input type="text" id="applicantName" name="name" required style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+            <div>
+              <label for="applicantEmail" style="display:block;margin-bottom:4px;">Email Address<span style="color:#ef4444;">*</span></label>
+              <input type="email" id="applicantEmail" name="email" required style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+          </div>
+          <div class="job-modal-form-row" style="margin-bottom:14px;">
+            <div>
+              <label for="applicantPhone" style="display:block;margin-bottom:4px;">Phone Number<span style="color:#ef4444;">*</span></label>
+              <input type="tel" id="applicantPhone" name="phone" required pattern="[0-9]{10,15}" inputmode="numeric" style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+            <div>
+              <label for="applicantPlace" style="display:block;margin-bottom:4px;">Place<span style="color:#ef4444;">*</span></label>
+              <input type="text" id="applicantPlace" name="place" required style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+          </div>
+          <div class="job-modal-form-row" style="margin-bottom:14px;">
+            <div>
+              <label for="applicantDepartment" style="display:block;margin-bottom:4px;">Department<span style="color:#ef4444;">*</span></label>
+              <input type="text" id="applicantDepartment" name="department" required style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+            <div>
+              <label for="applicantDesignation" style="display:block;margin-bottom:4px;">Designation<span style="color:#ef4444;">*</span></label>
+              <input type="text" id="applicantDesignation" name="designation" required style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;">
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <label for="resumeFile" style="display:block;margin-bottom:4px;">Resume (PDF, DOC, DOCX, max 10MB)<span style="color:#ef4444;">*</span></label>
+            <input type="file" id="resumeFile" name="resume" accept=".pdf,.doc,.docx" required style="width:100%;">
+            <div id="resumeFileError" style="color:#ef4444;font-size:0.95em;display:none;margin-top:4px;">File must be less than 10MB.</div>
+          </div>
+          <div style="margin-bottom:18px;">
+            <label for="aboutYourself" style="display:block;margin-bottom:4px;">Tell me about yourself</label>
+            <textarea id="aboutYourself" name="about_yourself" rows="4" style="width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:5px;"></textarea>
+          </div>
+          <button type="submit" style="background:#007a5e;color:#fff;padding:12px 28px;border:none;border-radius:5px;font-size:1rem;cursor:pointer;">Submit Application</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+    // Modal logic
+    function openJobApplicationModal(role, location, department) {
+      document.getElementById('modal-job-title').textContent = role + (location ? ' (' + location + ')' : '');
+      document.getElementById('modal-job-role').value = role;
+      document.getElementById('modal-job-location').value = location || '';
+      document.getElementById('modal-job-department').value = department || '';
+      const modal = document.getElementById('job-application-modal');
+      modal.classList.remove('closing');
+      // Set to display flex immediately, but keep transform at 100% for animation
+      modal.style.display = 'flex';
+      // Force reflow to ensure the browser registers the initial state
+      void modal.offsetWidth;
+      modal.classList.add('active');
+    }
+
+    function closeJobApplicationModal() {
+      const modal = document.getElementById('job-application-modal');
+      modal.classList.add('closing');
+      setTimeout(() => {
+        modal.classList.remove('active');
+        modal.classList.remove('closing');
+      }, 450); // match the transition duration
+    }
+
+    document.getElementById('close-job-modal').onclick = function() {
+      closeJobApplicationModal();
+    };
+    // Close modal on outside click
+    document.getElementById('job-application-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeJobApplicationModal();
+    });
+    // Resume file size validation
+    document.getElementById('resumeFile').addEventListener('change', function() {
+      const file = this.files[0];
+      const errorDiv = document.getElementById('resumeFileError');
+      if (file && file.size > 10 * 1024 * 1024) {
+        errorDiv.style.display = 'block';
+        this.value = '';
+      } else {
+        errorDiv.style.display = 'none';
+      }
+    });
     </script>
 
 </body>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Digital Transformation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa !important;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .left-section {
+            padding-right: 40px;
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+
+        .brochure-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brochure-icon {
+            width: 80px;
+            height: 60px;
+            background-color: #cbd5e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .brochure-icon::before {
+            content: '';
+            width: 35px;
+            height: 25px;
+            background-color: white;
+            border-radius: 3px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .brochure-content h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .brochure-meta {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #666;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7,10 12,15 17,10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center;
+            mask-size: contain;
+        }
+
+        .right-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-tabs {
+            display: flex;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            font-size: 1rem;
+            color: #666;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab.active {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            width: 100%;
+        }
+        .phone-input,
+        .phone-number,
+        .form-group input[type="email"],
+        .form-group input[type="text"] {
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        input, textarea {
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 44px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .phone-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .country-code {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-right: none;
+            border-radius: 6px 0 0 6px;
+            background-color: #f9fafb;
+            font-size: 1rem;
+        }
+
+        .flag-icon {
+            width: 16px;
+            height: 12px;
+            background: linear-gradient(to bottom, #ff9933 33%, white 33%, white 66%, #138808 66%);
+            border-radius: 2px;
+            display: inline-block;
+        }
+        .country-code {
+            height: 44px;
+            /* Match input height (12px padding top+bottom + 20px font + border) */
+            box-sizing: border-box;
+        }
+        .phone-number {
+            height: 44px;
+            box-sizing: border-box;
+        }
+
+        .phone-number {
+            border-radius: 0 6px 6px 0 !important;
+            border-left: none !important;
+            flex: 1;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            background-color: #1f2937;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #111827;
+        }
+
+        .arrow-icon {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12,5 19,12 12,19'/%3E%3C/svg%3E") no-repeat center;
+            mask-size: contain;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+
+            .main-heading {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .right-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Move header further down the page for contact.html -->
+    <div style="height: 80px;"></div>
+    <div style="height: 80px;"></div>
+    <div id="header-include"></div>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script>
+    <div class="container">
+        <div class="left-section">
+            <h1 class="main-heading">Discover Digital Transformation</h1>
+            <p class="subtitle">You’re welcome to share your ideas and we can chat about them over a coffee.</p>
+            
+            <div class="brochure-section">
+                <div class="brochure-icon"></div>
+                <div class="brochure-content">
+                    <h3>Download Our Brochure</h3>
+                    <div class="brochure-meta">
+                        <span>PDF 2.0 MB</span>
+                        <div class="download-icon"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="form-tabs">
+                <button class="tab active">Get a Quote</button>
+                <button class="tab">Partnership</button>
+                <button class="tab">General Enquiry</button>
+            </div>
+
+            <form id="contactForm" action="https://formspree.io/f/manjbyaw" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name<span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter last name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number<span class="required">*</span></label>
+                        <div class="phone-input">
+                            <div class="country-code">
+                                <div class="flag-icon"></div>
+                                <span>▼</span>
+                            </div>
+                            <input type="tel" id="phone" name="phone" placeholder="+91" class="phone-number" required pattern="[0-9]{10,15}" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email<span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Enter email" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Tell Us More</label>
+                    <textarea id="message" name="message" placeholder="Brief about your project"></textarea>
+                    <div class="char-counter">0/1000</div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Send Enquiry
+                    <div class="arrow-icon"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Character counter
+        const textarea = document.getElementById('message');
+        const charCounter = document.querySelector('.char-counter');
+        
+        textarea.addEventListener('input', () => {
+            const count = textarea.value.length;
+            charCounter.textContent = `${count}/1000`;
+        });
+
+        // Remove JS form submission handler for Formspree
+
+        // Brochure download
+        document.querySelector('.brochure-section').addEventListener('click', () => {
+            alert('Brochure download started!');
+        });
+    </script>
+</body>
+</html>

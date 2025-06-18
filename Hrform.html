@@ -104,6 +104,12 @@
 </head>
 
 <body>
+    <div id="header-include"></div>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script>
 
     <h2>Add New Job Opening</h2>
     <form id="jobForm">
@@ -137,7 +143,7 @@
     </script>
 
 
-    <footer style="width:100%;margin-top:48px;padding:32px 0 18px 0;background:rgba(0,184,148,0.07);text-align:center;font-size:1.05rem;color:#222;letter-spacing:0.01em;">
+<footer style="width:100%;margin-top:auto;padding:32px 0 18px 0;background:rgba(0,184,148,0.07);text-align:center;font-size:1.05rem;color:#222;letter-spacing:0.01em;position:relative;bottom:0;left:0;">
         <div style="margin-bottom:8px;">
             <a href="privacy-policy.html" style="color:#00b894;text-decoration:none;margin:0 18px;">Privacy Policy</a>
             |

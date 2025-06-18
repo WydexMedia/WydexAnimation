@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Clients - Wydex</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .clients-all-header {
+      text-align: center;
+      padding: 48px 0 16px 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+      border-bottom: 1px solid #222;
+      margin-bottom: 32px;
+    }
+    .clients-all-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 32px 16px;
+      max-width: 1200px;
+      margin: 0 auto 64px auto;
+      padding: 0 16px;
+    }
+    .client-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      min-height: unset;
+      box-shadow: none;
+      border: none;
+    }
+    .client-logo img {
+      max-width: 120px;
+      max-height: 48px;
+      object-fit: contain;
+      filter: grayscale(100%) contrast(1.1);
+      opacity: 0.92;
+      transition: filter 0.3s, opacity 0.3s;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      border: none;
+    }
+    .client-logo:hover img {
+      filter: grayscale(0%) contrast(1.2);
+      opacity: 1;
+      background: transparent;
+    }
+    @media (max-width: 700px) {
+      .clients-all-header {
+        font-size: 1.4rem;
+        padding: 28px 0 10px 0;
+      }
+      .clients-all-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 4px;
+        padding: 0 2vw;
+      }
+      .client-logo img {
+        max-width: 44vw;
+        max-height: 28px;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clients-all-header">All Clients</div>
+  <div class="clients-all-grid">
+    <div class="client-logo"><img src="./src/image/client logo/ATHER.png" alt="Ather" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/BAMBEE.png" alt="Bambee" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/BEXLEY.png" alt="Bexley" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/BNI.png" alt="BNI" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/BOTIQUEEN.png" alt="Botiqueen" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/CAMIYA.png" alt="Camiya" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/CARE.png" alt="Care" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/CHILLIES RESTAURENT.png" alt="Chillies Restaurant" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/COBALT.png" alt="Cobalt" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/FIALOVY.png" alt="Fialovy" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/FINJET.png" alt="Finjet" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/FLAVOURS OF KERALA.png" alt="Flavours of Kerala" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/FOO FOODS.png" alt="Foo Foods" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/GROVEX.png" alt="Grovex" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/HISLEEP.png" alt="Hisleep" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/INTERVAL.png" alt="Interval" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/ISTORIES.png" alt="iStories" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/LINEN PALACE.png" alt="Linen Palace" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/MECHTRON.png" alt="Mechtron" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/NAADAN BLOGGERS.png" alt="Naadan Bloggers" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/NILAM.png" alt="Nilam" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/NURTURE.png" alt="Nurture" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/PARCEL SERVICE.png" alt="Parcel Service" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/PG.png" alt="PG" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/POGO.png" alt="Pogo" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/PROSKILL.png" alt="Proskill" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/SAVIDHAM.png" alt="Savidham" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/UMAI.png" alt="Umai" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/VHARA.png" alt="Vhara" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/ZELEBRAE.png" alt="Zelebrae" /></div>
+    <div class="client-logo"><img src="./src/image/client logo/ZOOTY.png" alt="Zooty" /></div>
+  </div>
+
+</body>
+</html>

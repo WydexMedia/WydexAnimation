@@ -11,27 +11,15 @@
 
 <body>
 
-    <header>
-        <div class="logo">Wydex</div>
-        <nav id="mainNav">
-            <a href="#">Services</a>
-            <a href="#">Solutions</a>
-            <a href="#">Industries</a>
-            <a href="#">Works</a>
-            <a href="#">About</a>
-            <a href="./career.html">Careers</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div class="icons">
-            <!-- <span>📞</span>
-      <span>🔍</span>
-      <span>🔖</span> -->
-            <span id="hamburger" style="cursor:pointer;">☰</span>
-        </div>
-    </header>
+    <div id="header-include"></div>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script>
 
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <video id="heroVideo" autoplay muted loop playsinline style="width:100%;height:auto;">
             <source src="src/videos/video1.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -49,60 +37,79 @@
 
 
     <section class="triple-section-pin">
-      <div class="design-section triple-section design-section-1">
-          <div class="design-content">
-              <h1 class="design-title">
-                  Design
+        <div class="design-section triple-section design-section-1">
+            <div class="design-content">
+                <div class="butterfly-mobile-wrap">
                   <video class="butterfly-video" autoplay muted loop playsinline>
                       <source src="./src/videos/butterfly.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                   </video>
-              </h1>
-              <p class="design-subtext">
-                  Intelligent design is the essence of nature;<br />
-                  that’s our inspiration in crafting tomorrow’s tech realm
-              </p>
-              <a href="#" class="learn-more">
-                  Learn more <span>&rarr;</span>
-              </a>
-          </div>
-      </div>
-      <div class="design-section triple-section design-section-2">
-          <div class="design-content">
-              <h1 class="design-title">
-                  Build
+                </div>
+                <h1 class="design-title">
+                    Design
+                    <video class="butterfly-video desktop-butterfly" autoplay muted loop playsinline>
+                        <source src="./src/videos/butterfly.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </h1>
+                <p class="design-subtext">
+                    Intelligent design is the essence of nature;<br />
+                    that’s our inspiration in crafting tomorrow’s tech realm
+                </p>
+                <a href="#" class="learn-more">
+                    Learn more <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="design-section triple-section design-section-2">
+            <div class="design-content">
+                <!-- Show only one video in mobile, both in desktop -->
+                <div class="butterfly-mobile-wrap">
                   <video class="butterfly-video" autoplay muted loop playsinline>
                       <source src="./src/videos/build.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                   </video>
-              </h1>
-              <p class="design-subtext">
-                  Intelligent design is the essence of nature;<br />
-                  that’s our inspiration in crafting tomorrow’s tech realm
-              </p>
-              <a href="#" class="learn-more">
-                  Learn more <span>&rarr;</span>
-              </a>
-          </div>
-      </div>
-      <div class="design-section triple-section design-section-3">
-          <div class="design-content">
-              <h1 class="design-title">
-                  Market
+                </div>
+                <h1 class="design-title">
+                    Build
+                    <video class="build-video desktop-build" autoplay muted loop playsinline>
+                        <source src="./src/videos/build.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </h1>
+                <p class="design-subtext">
+                    Intelligent design is the essence of nature;<br />
+                    that’s our inspiration in crafting tomorrow’s tech realm
+                </p>
+                <a href="#" class="learn-more">
+                    Learn more <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="design-section triple-section design-section-3">
+            <div class="design-content">
+                <div class="butterfly-mobile-wrap">
                   <video class="butterfly-video" autoplay muted loop playsinline>
                       <source src="./src/videos/market.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                   </video>
-              </h1>
-              <p class="design-subtext">
-                  Intelligent design is the essence of nature;<br />
-                  that’s our inspiration in crafting tomorrow’s tech realm
-              </p>
-              <a href="#" class="learn-more">
-                  Learn more <span>&rarr;</span>
-              </a>
-          </div>
-      </div>
+                </div>
+                <h1 class="design-title">
+                    Market
+                    <video class="rocket-video desktop-market" autoplay muted loop playsinline>
+                        <source src="./src/videos/market.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </h1>
+                <p class="design-subtext">
+                    Intelligent design is the essence of nature;<br />
+                    that’s our inspiration in crafting tomorrow’s tech realm
+                </p>
+                <a href="#" class="learn-more">
+                    Learn more <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
     </section>
 
 
@@ -265,7 +272,96 @@
         </div>
     </section>
 
-   
+
+    <section class="clients-section">
+        <div class="background-lines"></div>
+        <div class="container">
+            <div class="header">
+                <h1 class="title">Clients</h1>
+                <p class="subtitle">Our clients are everything to us; so are we to them.</p>
+            </div>
+            
+            <div class="clients-grid">
+                <div class="client-logo"><img src="./src/image/client logo/ATHER.png" alt="Ather" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/BAMBEE.png" alt="Bambee" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/BEXLEY.png" alt="Bexley" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/BNI.png" alt="BNI" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/BOTIQUEEN.png" alt="Botiqueen" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/CAMIYA.png" alt="Camiya" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/CARE.png" alt="Care" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/CHILLIES RESTAURENT.png" alt="Chillies Restaurant" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/COBALT.png" alt="Cobalt" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/FIALOVY.png" alt="Fialovy" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/FINJET.png" alt="Finjet" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/FLAVOURS OF KERALA.png" alt="Flavours of Kerala" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/FOO FOODS.png" alt="Foo Foods" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/GROVEX.png" alt="Grovex" /></div>
+                <div class="client-logo"><img src="./src/image/client logo/HISLEEP.png" alt="Hisleep" /></div>
+            </div>
+            
+            <a href="#" class="view-all-btn">
+                View all clients
+                <span class="arrow">→</span>
+            </a>
+<script>
+  // Make the button go to the new clients page
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.querySelector('.view-all-btn');
+    if(btn) btn.setAttribute('href', 'clients.html');
+  });
+</script>
+        </div>
+    </section>
+
+
+    <section class="careers-section">
+        <div class="careers-left">
+            <div class="careers-content">
+                <h1 class="careers-heading">You Will Like It Here!</h1>
+                <p class="careers-description">
+                    At WAC, we are all about creating a habitat that lets you grow stronger roots and larger branches.
+                    Together let's make a fruitful journey!
+                </p>
+                <button class="careers-button" onclick="window.open('#', '_blank')">
+                    Explore opportunities
+                </button>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var careersBtn = document.querySelector('.careers-button');
+                        if (careersBtn) {
+                            careersBtn.onclick = function (e) {
+                                e.preventDefault();
+                                window.open('career.html', '_blank');
+                            };
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="careers-right">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face&auto=format&q=80"
+                alt="Professional team member" class="careers-image">
+
+            <div class="careers-circular-text">
+                <svg viewBox="0 0 200 200">
+                    <defs>
+                        <path id="circle" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+                    </defs>
+                    <text>
+                        <textPath href="#circle" startOffset="0%">
+                            JOIN OUR TEAM • JOIN OUR TEAM • JOIN OUR TEAM •
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 
 
 
@@ -273,9 +369,9 @@
         <div class="footer-header">
             <div>
                 <h2>Get started now!</h2>
-                <p>It takes less than a minute of your time.</p>
+                <p>Your growth partner – the best digital marketing agency in Calicut.</p>
             </div>
-            <button class="quote-btn">Request a quote →</button>
+<button class="quote-btn" onclick="window.location.href='contact.html'">Request a quote →</button>
         </div>
 
         <div class="footer-grid">

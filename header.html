@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+       <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<header class="custom-header">
+  <div class="header-left">
+    <div class="logo" onclick="window.location.href='index.html#hero'">Wydex</div>
+  </div>
+  <nav id="mainNav" class="header-nav">
+    <a href="#service">Services</a>
+    <a href="#">Industries</a>
+    <a href="./works.html">Works</a>
+    <a href="./aboutus.html">About</a>
+    <a href="./career.html">Careers</a>
+    <a href="./contact.html" class="contact-btn">Contact</a>
+  </nav>
+  <span id="hamburger" class="hamburger-menu">☰</span>
+</header>
+<style>
+  .custom-header {
+    width: 100vw;
+    max-width: 100%;
+    background: rgba(10, 10, 20, 0.98);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.3s;
+  }
+  /* Flex row for logo and hamburger on mobile */
+  @media (max-width: 900px) {
+    .custom-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .hamburger-menu {
+      position: static;
+      margin-left: auto;
+      order: 2;
+    }
+    .logo {
+      order: 1;
+    }
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .logo {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .logo:hover {
+    color: #8b5cf6;
+    transform: scale(1.04) translateY(-2px);
+  }
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .header-nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    /* padding: 8px 0; */
+    position: relative;
+    transition: color 0.2s;
+  }
+  .header-nav a:not(.contact-btn):after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 2px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .header-nav a:hover,
+  .header-nav a.active {
+    color: #8b5cf6;
+  }
+  .header-nav a:hover:not(.contact-btn):after,
+  .header-nav a.active:not(.contact-btn):after {
+    width: 100%;
+  }
+  .contact-btn {
+    background: white;
+    color: black !important;
+    border-radius: 4px;
+    padding: 10px 40px;
+    font-weight: 600;
+    margin-left: 18px;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.13);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 140px;
+    text-align: center;
+    font-size: 1.08rem;
+  }
+  .contact-btn:hover {
+    background: linear-gradient(90deg, #8b5cf6, #6366f1);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+  }
+  .hamburger-menu {
+    display: none !important;
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 18px;
+    transition: color 0.2s;
+  }
+  @media (max-width: 900px) {
+    .custom-header {
+      padding: 0 8px;
+      height: 54px;
+    }
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .header-nav {
+      display: none;
+    }
+    .hamburger-menu {
+      display: inline-block !important;
+      font-size: 2rem;
+      margin-left: 8px;
+    }
+    .contact-btn {
+      padding: 7px 16px;
+      font-size: 0.98rem;
+      margin-left: 8px;
+    }
+  }
+  @media (max-width: 600px) {
+    .custom-header {
+      padding: 0 2vw;
+      height: 44px;
+    }
+    .logo {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .hamburger-menu {
+      font-size: 1.6rem;
+      margin-left: 4px;
+    }
+    .contact-btn {
+                  padding: 10px 5px;
+        font-size: 0.9rem;
+        margin-left: 0px;
+        min-width: 60px;
+         /* max-width: 150px; */
+    }
+  }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 100;
+            line-height: 1.4;
+            color: #333333;
+            letter-spacing: -0.01em;
+            color: #000;
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 100;
+            color: #333;
+            letter-spacing: -1px;
+        }
+
+        .count {
+            font-size: 24px;
+            color: #666;
+            font-weight: 400;
+            vertical-align: top;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .filter-btn:hover {
+            border-color: #007bff;
+        }
+
+        .filter-btn::after {
+            content: '▼';
+            margin-left: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .case-study-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-category {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .card-title {
+            font-size: 20px;
+            line-height: 1.4;
+            color: #333;
+            font-weight: 400;
+        }
+
+        /* Specific styling for card categories */
+        .food-category {
+            color: #ff6b35;
+        }
+
+        .retail-category {
+            color: #007bff;
+        }
+
+        .automobile-category {
+            color: #28a745;
+        }
+
+        @media (max-width: 1024px) {
+            .case-studies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #f8f9fa;">
+    <div id="header-include"></div>
+    <script>
+        fetch('header.html')
+            .then(res => res.text())
+            .then(html => { document.getElementById('header-include').innerHTML = html; });
+    </script>
+    <div style="background: white; min-height: 100vh; width: 100%; margin-top: 40px;">
+        <div class="container" style="padding: 40px;">
+            <div class="header">
+                <h1 class="title">Case Studies <span class="count"></span></h1>
+            </div>
+            <div class="case-studies-grid">
+                <!-- Caribou Case Study -->
+                <div class="case-study-card">
+                    <img src="./src/image/camiya_header.jpeg"  class="card-image">
+                    <div class="card-content">
+                        <div class="card-category food-category">Retail</div>
+                        <h3 class="card-title">Camiya Diamonds: Helping a reputed diamond brand from Calicut shine
+                            online with a stunning new digital presence</h3>
+                    </div>
+                </div>
+
+                <!-- IKEA Case Study -->
+                <div class="case-study-card">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDQwMCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjgwIiBmaWxsPSIjNDA4MEZGIi8+CjxyZWN0IHg9IjUwIiB5PSIxMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiMwMDNCN0YiLz4KPHRleHQgeD0iMjAwIiB5PSIxNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNGRkQ3MDAiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtd2VpZ2h0PSJib2xkIj5JS0VBPC90ZXh0Pgo8L3N2Zz4K"
+                        alt="IKEA store front" class="card-image">
+                    <div class="card-content">
+                        <div class="card-category retail-category">Retail / Food</div>
+                        <h3 class="card-title">IKEA Foods: Delectably designed branded E-commerce store to launch a new
+                            sales channel</h3>
+                    </div>
+                </div>
+
+                <!-- Turtlewax Case Study -->
+                <div class="case-study-card">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDQwMCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjgwIiBmaWxsPSIjRjBGOEZGIi8+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjE0MCIgcj0iNDAiIGZpbGw9IiMzMzMiLz4KPGVsbGlwc2UgY3g9IjEyMCIgY3k9IjE4MCIgcng9IjYwIiByeT0iMTUiIGZpbGw9IiM2NjYiIG9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSIyMDAiIHk9IjEwMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiMwMEZGNzciLz4KPHRleHQgeD0iMjI1IiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzMiIGZvbnQtc2l6ZT0iMTAiPkZMRVg8L3RleHQ+CjxyZWN0IHg9IjI4MCIgeT0iNDAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIyMDAiIHJ4PSIxMCIgZmlsbD0iIzMzMyIgb3BhY2l0eT0iMC4xIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2IiBmb250LXNpemU9IjE0Ij5DYXJ3YXNoPC90ZXh0Pgo8L3N2Zz4K"
+                        alt="Car detailing product" class="card-image">
+                    <div class="card-content">
+                        <div class="card-category automobile-category">Automobile</div>
+                        <h3 class="card-title">Turtlewax: Achieving glossy greatness for cars with a smooth redefined
+                            website</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effects and interactions
+        document.querySelectorAll('.case-study-card').forEach(card => {
+            card.addEventListener('click', function () {
+                console.log('Case study clicked:', this.querySelector('.card-title').textContent);
+            });
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                console.log('Filter clicked:', this.textContent);
+            });
+        });
+    </script>
+</body>
+
+</html>
