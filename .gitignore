@@ -1,0 +1,2 @@
+# Ignore Firebase config for security
+js/firebaseConfig.js
