@@ -141,11 +141,84 @@
 </section>
 
 
+    <style>
+      .accordion-body { display: none; }
+      .accordion {
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        background: #fff;
+        margin: 0 auto;
+        max-width: 900px;
+        width: 100%;
+      }
+      .accordion-item {
+        border-bottom: 1px solid #ececec;
+        background: none;
+      }
+      .accordion-item:last-child {
+        border-bottom: none;
+      }
+      .accordion-header {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 18px 0 18px 0;
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: #222;
+        cursor: pointer;
+        transition: color 0.2s;
+        letter-spacing: 0.01em;
+      }
+      .accordion-header:hover, .accordion-item.active .accordion-header {
+        color: #007a5e;
+        background: none;
+      }
+      .accordion-body {
+        padding: 0 0 18px 0;
+        background: none;
+        font-size: 0.98rem;
+        color: #444;
+      }
+      .accordion ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .accordion li {
+        margin-bottom: 16px;
+        padding-left: 0;
+      }
+      .apply-now-btn {
+        background: #007a5e;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 7px 16px;
+        font-size: 0.97rem;
+        margin-top: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .apply-now-btn:hover {
+        background: #005f4a;
+      }
+    </style>
     <script>
-
-        // Fetch jobs from localStorage and render accordion
-        function renderJobsAccordion() {
-            const jobsData = JSON.parse(localStorage.getItem("jobs")) || {};
+    // Fetch jobs from Firestore and render accordion
+    function renderJobsAccordion() {
+        firebase.firestore().collection("jobs").orderBy("created", "desc").get().then(snapshot => {
+            const jobsData = {};
+            snapshot.forEach(doc => {
+                const job = doc.data();
+                // Only show jobs that have a valid category and role
+                if (!job.category || !job.role) return;
+                if (!job.created) return;
+                if (!jobsData[job.category]) jobsData[job.category] = [];
+                jobsData[job.category].push(job);
+            });
             const accordion = document.getElementById("jobsAccordion");
             accordion.innerHTML = '';
             const categories = Object.keys(jobsData);
@@ -159,9 +232,11 @@
                 item.className = 'accordion-item';
                 const header = document.createElement('button');
                 header.className = 'accordion-header';
+                header.type = 'button';
                 header.textContent = `${category} (${roles.length})`;
                 const body = document.createElement('div');
                 body.className = 'accordion-body';
+                body.style.display = 'none';
                 const ul = document.createElement('ul');
                 roles.forEach(job => {
                     const li = document.createElement('li');
@@ -191,20 +266,30 @@
                 item.appendChild(body);
                 accordion.appendChild(item);
             });
-        }
-
-        renderJobsAccordion();
-
-        // Accordion toggle logic
-        document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('accordion-header')) {
-                const item = e.target.parentElement;
-                item.classList.toggle('active');
-                const body = item.querySelector('.accordion-body');
-                body.style.display = body.style.display === 'block' ? 'none' : 'block';
-            }
         });
+    }
+    document.addEventListener('DOMContentLoaded', renderJobsAccordion);
 
+    // Accordion toggle logic
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('accordion-header')) {
+            const item = e.target.closest('.accordion-item');
+            if (!item) return;
+            // Hide all other accordions
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherBody = otherItem.querySelector('.accordion-body');
+                    if (otherBody) otherBody.style.display = 'none';
+                }
+            });
+            // Toggle this one
+            const body = item.querySelector('.accordion-body');
+            if (!body) return;
+            const isActive = item.classList.toggle('active');
+            body.style.display = isActive ? 'block' : 'none';
+        }
+    });
     </script>
 
     <!-- Job Application Modal -->
@@ -375,6 +460,27 @@
       }
     });
     </script>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+   apiKey: "AIzaSyA4MEZiBs9tKvjYLMjWUvOEMLy1rH4s6B0",
+  authDomain: "wydexanimation.firebaseapp.com",
+  projectId: "wydexanimation",
+  storageBucket: "wydexanimation.firebasestorage.app",
+  messagingSenderId: "442155217456",
+  appId: "1:442155217456:web:047fe2d6e724690bc0f3f5"
+    // ...rest of config
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+
 
 </body>
 

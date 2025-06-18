@@ -1,4 +1,139 @@
-        .team-section {
+@media (max-width: 900px) {
+  .team-section {
+    height: 60vh;
+    min-height: 400px;
+  }
+  .team-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-section {
+    height: 48vh;
+    min-height: 320px;
+  }
+  .team-content h1 {
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+  .team-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  .team-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.1rem;
+  }
+  .openings-section {
+    padding: 40px 8px;
+  }
+  .openings-section h2 {
+    font-size: 1.5rem;
+  }
+  .openings-section p {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  .accordion-header {
+    padding: 14px 8px;
+    font-size: 1rem;
+  }
+  .accordion-body {
+    padding: 0 8px 14px;
+    font-size: 0.92rem;
+  }
+  .openings-button {
+    margin-top: 24px;
+  }
+  .openings-button a {
+    font-size: 0.98rem;
+    padding: 10px 16px;
+  }
+  .values-section {
+    padding: 40px 8px;
+    gap: 24px;
+  }
+  .values-left h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .values-left p {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  .values-icon {
+    font-size: 2rem;
+  }
+  .values-right {
+    gap: 18px;
+  }
+  .value-item {
+    padding-left: 10px;
+  }
+  .value-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .value-content p {
+    font-size: 0.95rem;
+  }
+  .life-wac-section {
+    padding: 32px 8px;
+  }
+  .life-wac-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .life-wac-section p {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  .life-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .grid-item img {
+    border-radius: 6px;
+  }
+  .perks-section {
+    padding: 32px 8px;
+  }
+  .perks-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .perks-header p {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  .perks-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .perk-item {
+    padding: 16px;
+    border-radius: 4px;
+  }
+  .perk-icon {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .perk-item h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  .perk-item p {
+    font-size: 0.92rem;
+  }
+  .job-modal-content {
+    max-width: 98vw;
+    padding: 16px 6px 12px 6px;
+    border-radius: 8px;
+  }
+}
+
+.team-section {
             position: relative;
             width: 100%;
             height: 100vh;

@@ -103,6 +103,7 @@
     </style>
 </head>
 
+
 <body>
     <div id="header-include"></div>
     <script>
@@ -120,26 +121,49 @@
         <button type="submit">Add Job</button>
     </form>
 
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script>
-        let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+     apiKey: "AIzaSyA4MEZiBs9tKvjYLMjWUvOEMLy1rH4s6B0",
+  authDomain: "wydexanimation.firebaseapp.com",
+  projectId: "wydexanimation",
+  storageBucket: "wydexanimation.firebasestorage.app",
+  messagingSenderId: "442155217456",
+  appId: "1:442155217456:web:047fe2d6e724690bc0f3f5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
 
-        document.getElementById("jobForm").addEventListener("submit", e => {
-            e.preventDefault();
-            const category = document.getElementById("categoryInput").value.trim();
-            const role = document.getElementById("roleInput").value.trim();
-            const description = document.getElementById("descriptionInput").value.trim();
-            const location = document.getElementById("locationInput").value.trim();
+    <!-- Your form and the script that uses firebase.firestore() -->
+    <script>
+    document.getElementById("jobForm").addEventListener("submit", async e => {
+        e.preventDefault();
+        const category = document.getElementById("categoryInput").value.trim();
+        const role = document.getElementById("roleInput").value.trim();
+        const description = document.getElementById("descriptionInput").value.trim();
+        const location = document.getElementById("locationInput").value.trim();
 
-            if (category && role) {
-                // Group jobs by category
-                let jobsData = JSON.parse(localStorage.getItem("jobs")) || {};
-                if (!jobsData[category]) jobsData[category] = [];
-                jobsData[category].push({ role, description, location });
-                localStorage.setItem("jobs", JSON.stringify(jobsData));
+        if (category && role) {
+            try {
+                await firebase.firestore().collection("jobs").add({
+                    category,
+                    role,
+                    description,
+                    location,
+                    created: firebase.firestore.FieldValue.serverTimestamp()
+                });
                 alert("Job added!");
                 document.getElementById("jobForm").reset();
+            } catch (err) {
+                alert("Error adding job: " + err.message);
             }
-        });
+        }
+    });
     </script>
 
 
