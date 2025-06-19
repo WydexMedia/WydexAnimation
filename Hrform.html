@@ -139,6 +139,7 @@
         const role = document.getElementById("roleInput").value.trim();
         const description = document.getElementById("descriptionInput").value.trim();
         const location = document.getElementById("locationInput").value.trim();
+        
 
         if (category && role) {
             try {
@@ -152,7 +153,7 @@
                 alert("Job added!");
                 document.getElementById("jobForm").reset();
             } catch (err) {
-                alert("Error adding job: " + err.message);
+                alert("Error adding a job: " + err.message);
             }
         }
     });
