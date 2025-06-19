@@ -13,6 +13,36 @@
 <body>
     <div id="header-include"></div>
     <script>
+    // Netlify AJAX form submission for modal
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('jobApplicationForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(form);
+          fetch('/', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/x-www-form-urlencoded' }
+          })
+          .then(function(response) {
+            if (response.ok) {
+              form.reset();
+              document.getElementById('form-success').style.display = 'block';
+              setTimeout(function() {
+                document.getElementById('job-application-modal').classList.remove('active');
+                document.getElementById('form-success').style.display = 'none';
+              }, 2500);
+            } else {
+              alert('There was a problem submitting your application. Please try again.');
+            }
+          })
+          .catch(function() {
+            alert('There was a problem submitting your application. Please try again.');
+          });
+        });
+      }
+    });
       fetch('header.html')
         .then(res => res.text())
         .then(html => { document.getElementById('header-include').innerHTML = html; });
@@ -368,7 +398,9 @@
       <div class="job-modal-content">
         <button id="close-job-modal" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.5rem;cursor:pointer;">&times;</button>
         <h2 style="margin-bottom:18px;font-size:1.4rem;">Apply for <span id="modal-job-title"></span></h2>
-        <form id="jobApplicationForm" enctype="multipart/form-data" method="POST" action="https://formspree.io/f/manjbyaw">
+        <form id="jobApplicationForm" name="jobApplicationForm" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="jobApplicationForm" />
+          <input type="hidden" name="bot-field" />
           <input type="hidden" name="job_role" id="modal-job-role" />
           <input type="hidden" name="job_location" id="modal-job-location" />
           <input type="hidden" name="job_department" id="modal-job-department" />
@@ -413,6 +445,9 @@
           </div>
           <button type="submit" style="background:#007a5e;color:#fff;padding:12px 28px;border:none;border-radius:5px;font-size:1rem;cursor:pointer;">Submit Application</button>
         </form>
+        <div id="form-success" style="display:none;color:green;margin-top:12px;">
+          Thank you! Your application has been submitted.
+        </div>
       </div>
     </div>
 

@@ -63,6 +63,87 @@
             min-height: 80px;
             max-height: 200px;
         }
+         .dashboard-container {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0 auto 40px auto;
+        max-width: 1200px;
+        width: 100%;
+      }
+      .dashboard-left, .dashboard-right {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(0,184,148,0.08);
+        padding: 32px 28px 24px 28px;
+        width: 100%;
+        max-width: 420px;
+      }
+      .dashboard-right {
+        max-width: 600px;
+        min-width: 320px;
+        flex: 1 1 0;
+      }
+      #jobsTableContainer {
+        width: 100%;
+        overflow-x: auto;
+      }
+      table.jobs-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.01rem;
+        background: #fff;
+        margin-top: 0;
+      }
+      .jobs-table th, .jobs-table td {
+        padding: 10px 8px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+      }
+      .jobs-table th {
+        background: #f8f8f8;
+        font-weight: 600;
+        color: #00b894;
+      }
+      .jobs-table tr:last-child td {
+        border-bottom: none;
+      }
+      .dashboard-action-btn {
+        background: #00b894;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 14px;
+        font-size: 0.97rem;
+        margin-right: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .dashboard-action-btn.delete {
+        background: #ef4444;
+      }
+      .dashboard-action-btn.edit {
+        background: #007a5e;
+      }
+      .dashboard-action-btn:hover {
+        opacity: 0.85;
+      }
+      .loading {
+        color: #888;
+        font-size: 1.1rem;
+        padding: 18px 0;
+        text-align: center;
+      }
+      @media (max-width: 1000px) {
+        .dashboard-container {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .dashboard-left, .dashboard-right {
+          max-width: 100%;
+        }
+      }
 
         button {
             width: 100%;
@@ -112,14 +193,27 @@
         .then(html => { document.getElementById('header-include').innerHTML = html; });
     </script>
 
-    <h2>Add New Job Opening</h2>
-    <form id="jobForm">
-        <input type="text" placeholder="Category (e.g., Design)" id="categoryInput" required />
-        <input type="text" placeholder="Role (e.g., UI Designer)" id="roleInput" required />
-        <textarea placeholder="Description" id="descriptionInput" required></textarea>
-        <input type="text" placeholder="Location" id="locationInput" required />
-        <button type="submit">Add Job</button>
-    </form>
+
+    <h2 style="margin-top: 100px;">HR Job Dashboard</h2>
+    <div class="dashboard-container" style="margin-top: 10px;">
+      <div class="dashboard-left">
+        <h3 style="margin-bottom:18px;color: black;">Add New Job Opening</h3>
+        <form id="jobForm">
+            <input type="text" placeholder="Category (e.g., Design)" id="categoryInput" required />
+            <input type="text" placeholder="Role (e.g., UI Designer)" id="roleInput" required />
+            <textarea placeholder="Description" id="descriptionInput" required></textarea>
+            <input type="text" placeholder="Location" id="locationInput" required />
+            <button type="submit">Add Job</button>
+        </form>
+      </div>
+      <div class="dashboard-right">
+        <h3 style="margin-bottom:18px; color: black;">All Job Openings</h3>
+        <div id="jobsTableContainer">
+          <div class="loading">Loading jobs...</div>
+        </div>
+      </div>
+    </div>
+     
 
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -132,31 +226,100 @@
     </script>
 
     <!-- Your form and the script that uses firebase.firestore() -->
+    <!-- Dashboard logic -->
     <script>
-    document.getElementById("jobForm").addEventListener("submit", async e => {
+    // Add or update job
+    let editingJobId = null;
+    const jobForm = document.getElementById("jobForm");
+    jobForm.addEventListener("submit", async e => {
         e.preventDefault();
         const category = document.getElementById("categoryInput").value.trim();
         const role = document.getElementById("roleInput").value.trim();
         const description = document.getElementById("descriptionInput").value.trim();
         const location = document.getElementById("locationInput").value.trim();
-        
-
-        if (category && role) {
-            try {
+        if (!category || !role) return;
+        try {
+            if (editingJobId) {
+                // Update existing job
+                await firebase.firestore().collection("jobs").doc(editingJobId).update({
+                    category, role, description, location
+                });
+                alert("Job updated!");
+                editingJobId = null;
+                jobForm.querySelector('button[type="submit"]').textContent = 'Add Job';
+            } else {
+                // Add new job
                 await firebase.firestore().collection("jobs").add({
-                    category,
-                    role,
-                    description,
-                    location,
+                    category, role, description, location,
                     created: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 alert("Job added!");
-                document.getElementById("jobForm").reset();
-            } catch (err) {
-                alert("Error adding a job: " + err.message);
+            }
+            jobForm.reset();
+            loadJobs();
+        } catch (err) {
+            alert("Error saving job: " + err.message);
+        }
+    });
+
+    // Load jobs and render table
+    async function loadJobs() {
+        const container = document.getElementById('jobsTableContainer');
+        container.innerHTML = '<div class="loading">Loading jobs...</div>';
+        try {
+            const snapshot = await firebase.firestore().collection("jobs").orderBy("created", "desc").get();
+            if (snapshot.empty) {
+                container.innerHTML = '<div class="loading">No jobs found.</div>';
+                return;
+            }
+            let html = '<table style="color:black;" class="jobs-table"><thead><tr><th>Category</th><th>Role</th><th>Description</th><th>Location</th><th>Actions</th></tr></thead><tbody>';
+            snapshot.forEach(doc => {
+                const job = doc.data();
+                html += `<tr data-id="${doc.id}">
+                    <td>${job.category || ''}</td>
+                    <td>${job.role || ''}</td>
+                    <td>${job.description || ''}</td>
+                    <td>${job.location || ''}</td>
+                    <td>
+                        <button class="dashboard-action-btn edit">Edit</button>
+                        <button class="dashboard-action-btn delete">Delete</button>
+                    </td>
+                </tr>`;
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        } catch (err) {
+            container.innerHTML = '<div class="loading">Error loading jobs.</div>';
+        }
+    }
+
+    // Handle edit/delete actions
+    document.getElementById('jobsTableContainer').addEventListener('click', async function(e) {
+        const tr = e.target.closest('tr[data-id]');
+        if (!tr) return;
+        const jobId = tr.getAttribute('data-id');
+        if (e.target.classList.contains('edit')) {
+            // Load job data into form
+            const doc = await firebase.firestore().collection("jobs").doc(jobId).get();
+            if (doc.exists) {
+                const job = doc.data();
+                document.getElementById("categoryInput").value = job.category || '';
+                document.getElementById("roleInput").value = job.role || '';
+                document.getElementById("descriptionInput").value = job.description || '';
+                document.getElementById("locationInput").value = job.location || '';
+                editingJobId = jobId;
+                jobForm.querySelector('button[type="submit"]').textContent = 'Update Job';
+            }
+        } else if (e.target.classList.contains('delete')) {
+            if (confirm('Delete this job?')) {
+                await firebase.firestore().collection("jobs").doc(jobId).delete();
+                loadJobs();
             }
         }
     });
+
+    // Initial load
+    loadJobs();
     </script>
 
 
