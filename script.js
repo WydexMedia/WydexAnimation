@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Video carousel
     const videos = [
-        "src/videos/video1.mp4",
+        "src/videos/video1.mov",
         "src/videos/video2.mp4",
         "src/videos/video3.mp4",
         "src/videos/video4.mp4"

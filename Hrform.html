@@ -186,6 +186,7 @@
 
 
 <body>
+
     <div id="header-include"></div>
     <script>
       fetch('header.html')
@@ -193,23 +194,32 @@
         .then(html => { document.getElementById('header-include').innerHTML = html; });
     </script>
 
+    <!-- Google Auth UI -->
+    <div id="login-container" style="display:none;justify-content:center;align-items:center;min-height:60vh;flex-direction:column;">
+      <h2 style="color:#00b894;">HR Login</h2>
+      <button id="google-signin-btn" style="background:#fff;border:1.5px solid #00b894;color:#00b894;padding:12px 32px;border-radius:8px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,184,148,0.10);margin-top:18px;">Sign in with Google</button>
+      <div id="login-error" style="color:#ef4444;margin-top:18px;display:none;"></div>
+    </div>
 
-    <h2 style="margin-top: 100px;">HR Job Dashboard</h2>
-    <div class="dashboard-container" style="margin-top: 10px;">
-      <div class="dashboard-left">
-        <h3 style="margin-bottom:18px;color: black;">Add New Job Opening</h3>
-        <form id="jobForm">
-            <input type="text" placeholder="Category (e.g., Design)" id="categoryInput" required />
-            <input type="text" placeholder="Role (e.g., UI Designer)" id="roleInput" required />
-            <textarea placeholder="Description" id="descriptionInput" required></textarea>
-            <input type="text" placeholder="Location" id="locationInput" required />
-            <button type="submit">Add Job</button>
-        </form>
-      </div>
-      <div class="dashboard-right">
-        <h3 style="margin-bottom:18px; color: black;">All Job Openings</h3>
-        <div id="jobsTableContainer">
-          <div class="loading">Loading jobs...</div>
+
+    <div id="hr-dashboard" style="display:none;">
+      <h2 style="margin-top: 100px;">HR Job Dashboard</h2>
+      <div class="dashboard-container" style="margin-top: 10px;">
+        <div class="dashboard-left">
+          <h3 style="margin-bottom:18px;color: black;">Add New Job Opening</h3>
+          <form id="jobForm">
+              <input type="text" placeholder="Category (e.g., Design)" id="categoryInput" required />
+              <input type="text" placeholder="Role (e.g., UI Designer)" id="roleInput" required />
+              <textarea placeholder="Description" id="descriptionInput" required></textarea>
+              <input type="text" placeholder="Location" id="locationInput" required />
+              <button type="submit">Add Job</button>
+          </form>
+        </div>
+        <div class="dashboard-right">
+          <h3 style="margin-bottom:18px; color: black;">All Job Openings</h3>
+          <div id="jobsTableContainer">
+            <div class="loading">Loading jobs...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -217,12 +227,50 @@
 
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script src="js/firebaseConfig.js"></script>
     <script>
       // Initialize Firebase using config from the external file
       firebase.initializeApp(window.firebaseConfig);
       const db = firebase.firestore();
+      const auth = firebase.auth();
+
+      // Allowed emails for HR dashboard access
+      const allowedEmails = ["hr@wydexmedia.com","shafin@wydexmedia.com"];
+
+      // Show/hide dashboard based on auth
+      function showDashboard(show) {
+        document.getElementById('hr-dashboard').style.display = show ? '' : 'none';
+        document.getElementById('login-container').style.display = show ? 'none' : 'flex';
+      }
+
+      // Google Sign-In
+      document.getElementById('google-signin-btn').onclick = function() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider).catch(function(error) {
+          document.getElementById('login-error').textContent = error.message;
+          document.getElementById('login-error').style.display = 'block';
+        });
+      };
+
+      // Auth state observer
+      auth.onAuthStateChanged(function(user) {
+        if (user && user.email) {
+          if (allowedEmails.includes(user.email)) {
+            showDashboard(true);
+          } else {
+            showDashboard(false);
+            document.getElementById('login-error').textContent = 'Access denied. Your email is not authorized.';
+            document.getElementById('login-error').style.display = 'block';
+            auth.signOut();
+          }
+        } else {
+          showDashboard(false);
+        }
+      });
+
+      // For future: to add more allowed emails, just add to allowedEmails array above.
     </script>
 
     <!-- Your form and the script that uses firebase.firestore() -->
